@@ -1,0 +1,127 @@
+// @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+body {
+  margin: 0;
+  font-family: -apple-system, "sans-serif", 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+.App {
+  scroll-behavior: smooth !important;
+  transition: all 0.3s ease-out !important;
+}
+
+.Navbar {
+
+  .appLogo {
+    height: 60px;
+    width: 160px;
+    
+  }
+
+  .navItems p:hover {
+    color: #22c2c5;
+    font-weight: 600;
+    transition: all 0.3s ease;
+  }
+
+
+}
+
+// side nav search bar button
+#navSearchBtn {
+  background-color: #22c2c5;
+  transition: all 0.3s ease-out;
+
+  &:hover {
+    cursor: pointer;
+    background-color: #1adbdf;
+  }
+}
+
+.Home {
+  scroll-behavior: smooth;
+
+  .bannerBtn {
+    
+    &:hover {
+      // background-color: #8bfdff;
+      background-color: #000;
+      color: #fff;
+    }
+  }
+
+  .popularCarousel{
+    scrollbar-width: thin;
+    -ms-overflow-style: none;
+
+    &::-webkit-scrollbar {
+      width: 0;
+     display: none;
+    }
+  }
+
+  .introBtn, .toTupBtn, .resinCollectionBtn, .specialItemBtn {
+    
+    &:hover {
+      background-color: #1adbdf;
+    }
+  }
+
+  
+  .resinIntro {
+
+    &:hover {
+      background-color: #f0f0f0;
+      transition: all 0.4s ease-out;
+    }
+  }
+
+}
+
+
+// .hover-element:hover + .hidden-component {
+//   display: block; /* Show the component when the element is hovered */
+// }
+
+
+
+// responsiveness
+@media screen and (max-width: 1027px) {
+  .Navbar {
+
+    .appLogo {
+      height: 50px;
+      width: 150px;
+      
+    }
+  
+  }
+}
+
+@media screen and (max-width: 899px) {
+  .Navbar {
+
+    .appLogo {
+      height: 40px;
+      width: 140px;
+      
+    }
+  
+  }
+}
+
+@media screen and (max-width: 330px) {
+  .Navbar {
+
+    .appLogo {
+      height: 40px;
+      width: 120px;
+      
+    }
+  
+  }
+}

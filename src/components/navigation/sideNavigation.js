@@ -116,6 +116,7 @@ const SideDrawer = ({handleProfileMenuOpen, transmit, setTransmit}) => {
                 setTransmit(false);
               }}
             >
+              <ListItemText primary="Wish list" />
               <ListItemIcon>
                 <Badge badgeContent={1} color="error">
                   {wishList ? 
@@ -124,7 +125,6 @@ const SideDrawer = ({handleProfileMenuOpen, transmit, setTransmit}) => {
                   <FavoriteOutlinedIcon sx={{ color: "#000"}} />}
                 </Badge>
               </ListItemIcon>
-              <ListItemText primary="Wish list" />
             </ListItemButton>
 
             <ListItemButton component={ RouterLink } to="/"
@@ -138,13 +138,13 @@ const SideDrawer = ({handleProfileMenuOpen, transmit, setTransmit}) => {
                 setTransmit(false);
               }}
             >
+              <ListItemText primary="Profile" />
               <ListItemIcon>
                 {profile ? 
                 <PersonOutlineRoundedIcon sx={{ color: "#000"}} />
                   : 
                 <PersonRoundedIcon sx={{ color: "#000"}} />}
               </ListItemIcon>
-              <ListItemText primary="Profile" />
             </ListItemButton>
 
             <ListItemButton component={ RouterLink } to="/"
@@ -158,6 +158,7 @@ const SideDrawer = ({handleProfileMenuOpen, transmit, setTransmit}) => {
                 setTransmit(false);
               }}
             >
+              <ListItemText primary="Bag" />
               <ListItemIcon>
                 <Badge badgeContent={1} color="error">
                   {bag ? 
@@ -166,7 +167,6 @@ const SideDrawer = ({handleProfileMenuOpen, transmit, setTransmit}) => {
                   <LocalMallRoundedIcon sx={{ color: "#000"}} />}
                 </Badge>
               </ListItemIcon>
-              <ListItemText primary="Bag" />
             </ListItemButton>
 
           </List>

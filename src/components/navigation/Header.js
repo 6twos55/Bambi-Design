@@ -124,7 +124,7 @@ const Header = () => {
             <Box 
               className="navItems"
               sx={{
-                display: { xs: 'none', md: 'flex' },
+                display: { xs: 'none', lg: 'flex' },
                 mt: 3, gap: {xs: 2, sm: 5},
                 fontSize: "13.5px",
                 fontWeight: 700
@@ -185,7 +185,7 @@ const Header = () => {
             <Box sx={{ flexGrow: 1 }} />
 
             {/* Nav icons */}
-            <Box sx={{ display: { xs: 'none', md: 'flex' }, marginTop: 2 }}>
+            <Box sx={{ display: { xs: 'none', lg: 'flex' }, marginTop: 2 }}>
               <Tooltip title="Search" disableInteractive>
                 <IconButton
                   size="medium"
@@ -253,7 +253,7 @@ const Header = () => {
             </Box>
 
             {/* Side drawer */}
-            <Box sx={{ display: { xs: 'flex', md: 'none' }, marginTop: 2 }}>
+            <Box sx={{ display: { xs: 'flex', lg: 'none' }, marginTop: 2 }}>
               <SideDrawer handleProfileMenuOpen={handleProfileMenuOpen} transmit={transmit} setTransmit={setTransmit} />
             </Box>
 

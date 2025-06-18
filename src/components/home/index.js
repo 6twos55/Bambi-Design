@@ -1,10 +1,7 @@
 import MiladaClothImg from "../../assets/pictures/trendingWears/Milada_vigovera.jpg";
-import RyanClothing from "../../assets/pictures/trendingWears/Ryan_hoffman.jpg";
 import SanthoshClothing from "../../assets/pictures/trendingWears/Santhosh_kumar.jpg";
 import TobiasClothing from "../../assets/pictures/trendingWears/Tobias_tullius.jpg";
 import HaryoClothing from "../../assets/pictures/trendingWears/Haryo_Setyadi.jpg";
-import IlyaClothing from "../../assets/pictures/trendingWears/Ilya_FFHI3.jpg";
-import CaioClothing from "../../assets/pictures/trendingWears/Caio_coelho.jpg";
 import CarterClothing from "../../assets/pictures/trendingWears/Carter_love.jpg";
 import MatthewClothing from "../../assets/pictures/trendingWears/Matthew_moloney.jpg";
 import MankiClothing from "../../assets/pictures/trendingWears/Manki_kim.jpg";
@@ -35,7 +32,7 @@ import {
   Fab,
 } from "@mui/material";
 import SpecialImg from "../../assets/pictures/Home_banner.jpg";
-import { useRef, useState, useEffect } from "react";
+import { useEffect, useRef, useState } from "react";
 
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
@@ -46,12 +43,9 @@ import KeyboardArrowUpOutlinedIcon from "@mui/icons-material/KeyboardArrowUpOutl
 // Carousel image items
 const trendingWears = [
   { picture: MiladaClothImg, name: "Milada Vigovera", price: "3,000.00" },
-  { picture: RyanClothing, name: "Ryan Hoffman", price: "5,000.00" },
   { picture: SanthoshClothing, name: "Santhosh Kumar", price: "1,000.00" },
   { picture: TobiasClothing, name: "Tobias Tullius", price: "800.00" },
   { picture: HaryoClothing, name: "Haryo Setyadi", price: "10,000.00" },
-  { picture: IlyaClothing, name: "Ilya FFHI3", price: "1,000.00" },
-  { picture: CaioClothing, name: "Caio Coelho", price: "200.00" },
   { picture: CarterClothing, name: "Carter Love", price: "900.00" },
   { picture: MatthewClothing, name: "Matthew Moloney", price: "15,000.00" },
   { picture: MankiClothing, name: "Manki Kim", price: "40,000.00" },
@@ -84,12 +78,18 @@ const Home = () => {
   const [arrow1Color, setArrow1Color] = useState(false);
   const [arrow2Color, setArrow2Color] = useState(false);
 
+  const [showScrollTop, setShowScrollTop] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setShowScrollTop(window.scrollY > 1900);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Carousel scrolling section
   const scrollRef = useRef(null);
-  const intervalRef = useRef(null);
-
-  // Store the current scroll position
-  const scrollPositionRef = useRef(0);
 
   // Function to handle manual scroll
   const handleManualScroll = (direction) => {
@@ -104,58 +104,8 @@ const Home = () => {
         left: targetScroll,
         behavior: "smooth",
       });
-
-      // Clear existing interval
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-
-      // Update position after animation completes
-      setTimeout(() => {
-        scrollPositionRef.current = scrollRef.current.scrollLeft;
-        startAutoScroll();
-      }, 500);
     }
   };
-
-  const startAutoScroll = () => {
-    // Clear any existing interval
-    if (intervalRef.current) {
-      clearInterval(intervalRef.current);
-    }
-
-    intervalRef.current = setInterval(() => {
-      if (scrollRef.current) {
-        const maxScroll =
-          scrollRef.current.scrollWidth - scrollRef.current.clientWidth;
-        const nextScroll = scrollRef.current.scrollLeft + 292;
-
-        if (Math.ceil(scrollRef.current.scrollLeft) >= maxScroll) {
-          scrollRef.current.scrollTo({
-            left: 0,
-            behavior: "smooth",
-          });
-          scrollPositionRef.current = 0;
-        } else {
-          scrollRef.current.scrollTo({
-            left: nextScroll,
-            behavior: "smooth",
-          });
-          scrollPositionRef.current = nextScroll;
-        }
-      }
-    }, 5000); // Increased interval for smoother transitions
-  };
-
-  // Start auto-scroll when component mounts
-  useEffect(() => {
-    startAutoScroll();
-    return () => {
-      if (intervalRef.current) {
-        clearInterval(intervalRef.current);
-      }
-    };
-  }, []);
 
   return (
     <div className="Home" style={{ position: "relative" }}>
@@ -449,7 +399,7 @@ const Home = () => {
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
           width: "100%",
-          height: { xs: "80vh", sm: "100vh", md: "120vh" },
+          height: { xs: "60vh", sm: "100vh", md: "110vh" },
           position: "relative",
           mt: { xs: 4, sm: 6, md: 10 },
         }}
@@ -469,8 +419,8 @@ const Home = () => {
             sx={{
               fontFamily: "Oswald",
               fontSize: { xs: "20px", sm: "28px", md: "35px" },
+              mb: { xs: 1, sm: 4 },
             }}
-            mb={1}
           >
             Shop the latest trends and timeless classics to refresh your
             wardrobe and express your unique style.
@@ -497,23 +447,28 @@ const Home = () => {
       </Box>
 
       {/* Scroll to top button */}
-      <Fab
-        sx={{
-          background: "#22c2c5",
-          position: "sticky",
-          mt: 2,
-          top: "70%",
-          left: { xs: "1%" },
-          borderRadius: 2,
-        }}
-        onClick={() => window.scrollTo(0, 0)}
-        className="toTupBtn"
-        aria-label="add"
-      >
-        <KeyboardArrowUpOutlinedIcon
-          sx={{ fontSize: { xs: "25px", md: "30px" } }}
-        />
-      </Fab>
+      {showScrollTop && (
+        <Fab
+          sx={{
+            background: "#22c2c5",
+            position: "fixed",
+            bottom: {xs: 80, sm: 55},
+            right: {xs: 12, md: 20},
+            borderRadius: 2,
+            zIndex: 1200,
+            "&:hover": {
+              background: "#1ba1a4",
+            },
+          }}
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="toTupBtn"
+          aria-label="scroll to top"
+        >
+          <KeyboardArrowUpOutlinedIcon
+            sx={{ fontSize: { xs: "25px", md: "30px" } }}
+          />
+        </Fab>
+      )}
 
       {/* Shopping categories */}
       <Box mt={{ xs: 0, sm: 2, md: 8 }}>
@@ -818,7 +773,7 @@ const Home = () => {
                 }}
                 aria-label="profile"
               >
-                J
+                S
               </Avatar>
             }
             title={

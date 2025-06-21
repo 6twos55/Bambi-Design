@@ -362,7 +362,7 @@ const Home = () => {
               sx={{
                 borderRadius: 0,
                 backgroundColor: `${
-                  !arrow1Color ? "#22c2c5" : "#4ed5d7"
+                  !arrow1Color ? "#1adbdf" : "#3ee0e3"
                 } !important`,
               }}
             >
@@ -380,7 +380,7 @@ const Home = () => {
               sx={{
                 borderRadius: 0,
                 backgroundColor: `${
-                  !arrow2Color ? "#22c2c5" : "#4ed5d7"
+                  !arrow2Color ? "#1adbdf" : "#3ee0e3"
                 } !important`,
               }}
             >
@@ -429,14 +429,14 @@ const Home = () => {
           <Link to="/" style={{ textDecoration: "none" }}>
             <Button
               sx={{
-                background: "#22c2c5",
+                background: "#1adbdf",
                 color: "#000",
                 borderRadius: "0",
                 transition: "all 0.3s ease-out",
                 padding: { xs: "5px 28px", sm: "5px 40px", md: "5px 75px" },
                 fontFamily: "Oswald",
                 fontSize: { xs: "14px", sm: "18px", md: "20px" },
-                mt: 2,
+                mt: {xs: 2, md: 3},
               }}
               className="introBtn"
             >
@@ -450,15 +450,12 @@ const Home = () => {
       {showScrollTop && (
         <Fab
           sx={{
-            background: "#22c2c5",
+            background: "#1adbdf",
             position: "fixed",
             bottom: {xs: 80, sm: 55},
             right: {xs: 12, md: 20},
             borderRadius: 2,
             zIndex: 1200,
-            "&:hover": {
-              background: "#1ba1a4",
-            },
           }}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="toTupBtn"
@@ -471,7 +468,7 @@ const Home = () => {
       )}
 
       {/* Shopping categories */}
-      <Box mt={{ xs: 0, sm: 2, md: 8 }}>
+      <Box mt={{ xs: 4, sm: 8 }}>
         <Typography
           variant="h4"
           sx={{
@@ -583,7 +580,7 @@ const Home = () => {
 
           <Button
             sx={{
-              background: "#22c2c5",
+              background: "#1adbdf",
               color: "#000",
               borderRadius: 0,
               transition: "all 0.3s ease-out",
@@ -657,7 +654,7 @@ const Home = () => {
 
             <Button
               sx={{
-                background: "#22c2c5",
+                background: "#1adbdf",
                 color: "#000",
                 borderRadius: 0,
                 transition: "all 0.3s ease-out",
@@ -748,7 +745,6 @@ const Home = () => {
               variant="h5"
               sx={{
                 maxWidth: 800,
-                fontWeight: 600,
                 fontStyle: "italic",
                 textAlign: "center",
                 letterSpacing: "0.3px",
@@ -757,8 +753,7 @@ const Home = () => {
               }}
             >
               I absolutely love shopping here! The quality of the clothes is
-              amazing and the styles are always on trend. Fast delivery and
-              great customer service too. Highly recommended!
+              amazing and the styles are always on trend!
             </Typography>
           </CardContent>
 
@@ -779,7 +774,7 @@ const Home = () => {
             title={
               <Typography
                 sx={{
-                  fontSize: { xs: "14px", sm: "16px", md: "18px" },
+                  fontSize: { xs: "14px", sm: "16px", md: "18px", fontWeight: 600 },
                 }}
               >
                 Sixtus Nwaogu
